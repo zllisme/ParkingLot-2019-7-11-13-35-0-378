@@ -71,4 +71,22 @@ public class ParkingCarTest {
         Assertions.assertNull(fetchedCar);
 
     }
+
+    @Test
+    void should_not_return_ticket_when_park_car_but_parking_lot_has_no_position() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        for (int i = 0; i < 10; i++) {
+            Car car = new Car();
+            parkingBoy.park(car);
+        }
+
+        //when
+        Car  extraCar = new Car();
+        Ticket ticket = parkingBoy.park(extraCar);
+
+        //than
+        Assertions.assertNull(ticket);
+    }
 }
