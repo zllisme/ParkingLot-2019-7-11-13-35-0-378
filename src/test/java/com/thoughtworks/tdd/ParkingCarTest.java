@@ -54,4 +54,21 @@ public class ParkingCarTest {
         Assertions.assertNull(fetchedCarTwo);
 
     }
+
+    @Test
+    public void should_not_return_car_when_fatch_car_given_used_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        Ticket usedTicket = parkingBoy.park(car);
+        parkingBoy.fetch(usedTicket);
+
+        //when
+        Car fetchedCar = parkingBoy.fetch(usedTicket);
+
+        //than
+        Assertions.assertNull(fetchedCar);
+
+    }
 }
