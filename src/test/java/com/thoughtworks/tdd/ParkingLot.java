@@ -26,7 +26,11 @@ public class ParkingLot {
     }
 
     public Ticket park(Car car) {
-        if(this.cars.containsValue(car) || car == null || cars.size() == capacity) {
+        if(cars.size() == capacity) {
+            errorMessage = "Not enough position.";
+            return null;
+        }
+        if(this.cars.containsValue(car) || car == null) {
             return null;
         }
         Ticket ticket = new Ticket();

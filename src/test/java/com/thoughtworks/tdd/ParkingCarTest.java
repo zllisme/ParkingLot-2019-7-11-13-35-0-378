@@ -149,7 +149,7 @@ public class ParkingCarTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
         parkingBoy.park(car);
-        
+
         //when
         Ticket nullTicket = null;
         parkingBoy.fetch(nullTicket);
@@ -159,4 +159,26 @@ public class ParkingCarTest {
         assertThat(errorMessage, CoreMatchers.is("Please provide your parking ticket."));
 
     }
+
+    @Test
+    public void should_get_error_message_when_park_car_has_no_position() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        for (int i = 0; i < 10; i++) {
+            Car car = new Car();
+            parkingBoy.park(car);
+        }
+
+        //when
+        Car extraCar = new Car();
+        parkingBoy.park(extraCar);
+        String errorMessage = parkingBoy.queryErrorMessage();
+
+        //than
+        assertThat(errorMessage, CoreMatchers.is("Not enough position."));
+
+    }
+
+
 }
