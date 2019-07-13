@@ -180,5 +180,28 @@ public class ParkingCarTest {
 
     }
 
+    @Test
+    public void should_return_car_when_fetch_car_given_ticket_by_parking_into_second_lot() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ParkingLot parkingLotTwo = new ParkingLot();
+        parkingBoy.addParkingLot(parkingLotTwo);
+        for (int i = 0; i < 10; i++) {
+            parkingBoy.park(new Car());
+        }
+        Car car = new Car();
+        Ticket ticket = parkingBoy.park(car);
+
+        //when
+        Car fetchedCar = parkingBoy.fetch(ticket);
+
+        //than
+        Assertions.assertSame(car, fetchedCar);
+
+    }
+
+
+
 
 }
