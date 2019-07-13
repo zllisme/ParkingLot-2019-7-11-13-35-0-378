@@ -16,11 +16,11 @@ public class ParkingLot {
     }
 
     public Ticket park(Car car) {
-        if(cars.size() < capacity) {
-            Ticket ticket = new Ticket();
-            this.cars.put(ticket, car);
-            return ticket;
+        if(car == null || cars.size() == capacity) {
+            return null;
         }
-        return null;
+        Ticket ticket = new Ticket();
+        this.cars.put(ticket, car);
+        return ticket;
     }
 }
