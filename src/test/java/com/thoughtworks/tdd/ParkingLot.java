@@ -1,14 +1,18 @@
 package com.thoughtworks.tdd;
 
-public class ParkingLot {
-    private Car car;
+import java.util.HashMap;
+import java.util.Map;
 
-    public Car getCar() {
-        return car;
+public class ParkingLot {
+    private Map<Ticket, Car> cars = new HashMap<>();
+
+    public Car getCar(Ticket ticket) {
+        return cars.remove(ticket);
     }
 
     public Ticket park(Car car) {
-        this.car = car;
-        return new Ticket();
+        Ticket ticket = new Ticket();
+        this.cars.put(ticket, car);
+        return ticket;
     }
 }

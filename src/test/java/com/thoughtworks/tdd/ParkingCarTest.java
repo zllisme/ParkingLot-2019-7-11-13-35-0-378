@@ -14,4 +14,24 @@ public class ParkingCarTest {
         Car fetchedCar = parkingBoy.fetch(ticket);
         Assertions.assertSame(car, fetchedCar);
     }
+
+    @Test
+    public void should_return_cars_when_fetch_cars_given_tickets_by_parking_the_cars() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        Car carTwo = new Car();
+        Ticket ticket = parkingBoy.park(car);
+        Ticket ticketTwo = parkingBoy.park(carTwo);
+
+        //when
+        Car fetchedCar = parkingBoy.fetch(ticket);
+        Car fetchedCarTwo = parkingBoy.fetch(ticketTwo);
+
+        //than
+        Assertions.assertSame(car, fetchedCar);
+        Assertions.assertSame(carTwo, fetchedCarTwo);
+
+    }
 }
