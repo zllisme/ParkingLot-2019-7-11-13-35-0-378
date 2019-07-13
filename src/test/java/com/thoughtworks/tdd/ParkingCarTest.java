@@ -141,4 +141,22 @@ public class ParkingCarTest {
         assertThat(message, CoreMatchers.is("Unrecognized parking ticket."));
 
     }
+
+    @Test
+    public void should_get_error_message_when_fetch_car_given_null_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        parkingBoy.park(car);
+        
+        //when
+        Ticket nullTicket = null;
+        parkingBoy.fetch(nullTicket);
+        String errorMessage = parkingBoy.queryErrorMessage();
+
+        //than
+        assertThat(errorMessage, CoreMatchers.is("Please provide your parking ticket."));
+
+    }
 }
