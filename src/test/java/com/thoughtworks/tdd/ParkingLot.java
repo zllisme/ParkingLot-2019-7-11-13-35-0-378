@@ -1,6 +1,5 @@
 package com.thoughtworks.tdd;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,12 +7,17 @@ import java.util.Map;
 public class ParkingLot {
     private int capacity = 10;
     private Map<Ticket, Car> cars = new HashMap<>();
+    private String errorMessage;
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
     public Car getCar(Ticket ticket) {
+        if(!cars.containsKey(ticket)) {
+            errorMessage = "Unrecognized parking ticket.";
+            return null;
+        }
         return cars.remove(ticket);
     }
 
@@ -24,5 +28,9 @@ public class ParkingLot {
         Ticket ticket = new Ticket();
         this.cars.put(ticket, car);
         return ticket;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
     }
 }

@@ -135,7 +135,7 @@ public class ParkingCarTest {
 
         //when
         parkingBoy.fetch(usedTicket);
-        String message = parkingBoy.getMessage();
+        String message = parkingBoy.queryErrorMessage();
 
         //than
         assertThat(message, CoreMatchers.is("Unrecognized parking ticket."));
