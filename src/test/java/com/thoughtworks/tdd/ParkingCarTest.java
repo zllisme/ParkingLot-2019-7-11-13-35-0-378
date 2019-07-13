@@ -34,4 +34,24 @@ public class ParkingCarTest {
         Assertions.assertSame(carTwo, fetchedCarTwo);
 
     }
+
+    @Test
+    public void should_not_return_car_when_fetch_car_given_fake_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        parkingBoy.park(car);
+
+        //when
+        Ticket fakeTicket = new Ticket();
+        Ticket nullTicket = null;
+        Car fetchedCar = parkingBoy.fetch(fakeTicket);
+        Car fetchedCarTwo = parkingBoy.fetch(nullTicket);
+
+        //than
+        Assertions.assertNull(fetchedCar);
+        Assertions.assertNull(fetchedCarTwo);
+
+    }
 }
