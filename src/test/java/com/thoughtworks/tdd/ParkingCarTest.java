@@ -1,7 +1,11 @@
 package com.thoughtworks.tdd;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static net.bytebuddy.matcher.ElementMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ParkingCarTest {
 
@@ -117,6 +121,24 @@ public class ParkingCarTest {
 
         //than
         Assertions.assertNull(ticket);
+
+    }
+
+    @Test
+    public void should_get_error_message_when_fetch_car_given_unrecognized_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        Ticket usedTicket = parkingBoy.park(car);
+        parkingBoy.fetch(usedTicket);
+
+        //when
+        parkingBoy.fetch(usedTicket);
+        String message = parkingBoy.getMessage();
+
+        //than
+        assertThat(message, CoreMatchers.is("Unrecognized parking ticket."));
 
     }
 }
