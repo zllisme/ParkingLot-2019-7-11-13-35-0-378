@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingBoy {
-    private ParkingLot parkingLot;
 
-    private List<ParkingLot> parkingLots= new ArrayList<>();
+    protected List<ParkingLot> parkingLots= new ArrayList<>();
 
-    private String errorMessage;
+    protected String errorMessage;
 
     public ParkingBoy(ParkingLot parkingLot) {
         this.parkingLots.add(parkingLot);
@@ -17,6 +16,18 @@ public class ParkingBoy {
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
+    }
+
+    public List<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
+
+    public void setParkingLots(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
     public void addParkingLot(ParkingLot parkingLot) {
@@ -65,4 +76,5 @@ public class ParkingBoy {
     public String queryErrorMessage() {
         return this.errorMessage;
     }
+
 }
