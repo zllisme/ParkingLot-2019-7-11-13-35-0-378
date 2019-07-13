@@ -103,4 +103,20 @@ public class ParkingCarTest {
         //than
         Assertions.assertNull(ticket);
     }
+
+    @Test
+    public void should_not_return_ticket_when_park_car_given_used_car() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        parkingBoy.park(car);
+
+        //when
+        Ticket ticket = parkingBoy.park(car);
+
+        //than
+        Assertions.assertNull(ticket);
+
+    }
 }

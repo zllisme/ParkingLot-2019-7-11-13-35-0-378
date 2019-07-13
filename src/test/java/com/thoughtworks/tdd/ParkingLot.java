@@ -16,7 +16,7 @@ public class ParkingLot {
     }
 
     public Ticket park(Car car) {
-        if(car == null || cars.size() == capacity) {
+        if(this.cars.containsValue(car) || car == null || cars.size() == capacity) {
             return null;
         }
         Ticket ticket = new Ticket();
