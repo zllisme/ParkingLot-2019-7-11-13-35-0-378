@@ -1,6 +1,7 @@
 package com.thoughtworks.tdd;
 
 import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -138,7 +139,7 @@ public class ParkingCarTest {
         String message = parkingBoy.queryErrorMessage();
 
         //than
-        assertThat(message, CoreMatchers.is("Unrecognized parking ticket."));
+        MatcherAssert.assertThat(message, CoreMatchers.is("Unrecognized parking ticket."));
 
     }
 
@@ -156,7 +157,7 @@ public class ParkingCarTest {
         String errorMessage = parkingBoy.queryErrorMessage();
 
         //than
-        assertThat(errorMessage, CoreMatchers.is("Please provide your parking ticket."));
+        MatcherAssert.assertThat(errorMessage, CoreMatchers.is("Please provide your parking ticket."));
 
     }
 
@@ -176,7 +177,7 @@ public class ParkingCarTest {
         String errorMessage = parkingBoy.queryErrorMessage();
 
         //than
-        assertThat(errorMessage, CoreMatchers.is("Not enough position."));
+        MatcherAssert.assertThat(errorMessage, CoreMatchers.is("Not enough position."));
 
     }
 
