@@ -37,8 +37,5 @@ public class SmartParkingBoy extends ParkingBoy{
         return parkingLots.get(maxPositionLotIndex).park(car);
     }
 
-    @Override
-    public Car fetch(Ticket ticket) {
-        return super.fetch(ticket);
-    }
+
 }
