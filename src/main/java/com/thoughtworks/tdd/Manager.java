@@ -28,15 +28,25 @@ public class Manager extends ParkingBoy {
         return parkingBoys;
     }
 
-    public void specifyParkingBoyPark(ParkingBoy parkingBoy, Car car) {
+    public Ticket specifyParkingBoyPark(ParkingBoy parkingBoy, Car car) {
+        Ticket ticket = null;
         if(parkingBoys.contains(parkingBoy)) {
-            parkingBoy.park(car);
+            ticket = parkingBoy.park(car);
+            if(ticket == null){
+                errorMessage = parkingBoy.queryErrorMessage();
+            }
         }
+        return ticket;
     }
 
-    public void specifyParkingBoyFetch(ParkingBoy parkingBoy, Ticket ticket) {
+    public Car specifyParkingBoyFetch(ParkingBoy parkingBoy, Ticket ticket) {
+        Car car = null;
         if(parkingBoys.contains(parkingBoy)) {
-            parkingBoy.fetch(ticket);
+            car = parkingBoy.fetch(ticket);
+            if(car == null){
+                errorMessage = parkingBoy.queryErrorMessage();
+            }
         }
+        return car;
     }
 }
